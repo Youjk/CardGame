@@ -5,6 +5,8 @@
 #include "Utils/TimeUtils.h"
 #include "MainUIScene/MainTopTouchLayer.h"
 #include "Dialog/DialogLayer.h"
+#include "BattleScene/BattleResultLayer.h"
+
 
 
 
@@ -57,6 +59,7 @@ bool MainUiScene::init()
 		}
 	};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(backlistener, this);
+
 	return true;
 }
 
@@ -73,8 +76,12 @@ void MainUiScene::ConfigureMultiplexLayer()
 {
 	_mainUILayer = MainUILayer::create();
 	_instanceUILayer = InstanceLayer::create();
+	_fightLayer = FightLayer::create();
+	_storeLayer = StoreLayer::create();
+	_socialLayer = SocialLayer::create();
+	_moreLayer = MoreLayer::create();
 
-	_mutiplexLayer = LayerMultiplex::create(_mainUILayer, _instanceUILayer, NULL);
+	_mutiplexLayer = LayerMultiplex::create(_mainUILayer, _instanceUILayer, _fightLayer, _storeLayer, _socialLayer, _moreLayer, NULL);
 	this->addChild(_mutiplexLayer);
 }
 
@@ -87,7 +94,7 @@ void MainUiScene::ConfigureTopUI()
 	auto top = Sprite::createWithSpriteFrameName("top.png");
 	top->setAnchorPoint(Vec2(0.5f, 1.0f));
 	top->setPosition(size.width/2, size.height);
-	this->addChild(top);
+	this->addChild(top, 5);
 	top->setTag(MAIN_TOP);
 
 	//¾üÏÎ
@@ -246,7 +253,8 @@ void MainUiScene::ScrollText()
 
 void MainUiScene::show_BattleResult(Ref* pSender)
 {
-
+	_battleResultLayer = BattleResultLayer::create();
+	this->addChild(_battleResultLayer, 4);
 }
 
 void MainUiScene::update(float dt)
@@ -302,20 +310,20 @@ void MainUiScene::button_Instance(Ref* pSender)
 
 void MainUiScene::button_Fight(Ref* pSender)
 {
-	//_mutiplexLayer->switchTo(2);
+	_mutiplexLayer->switchTo(2);
 }
 
 void MainUiScene::button_Store(Ref* pSender)
 {
-	//_mutiplexLayer->switchTo(3);
+	_mutiplexLayer->switchTo(3);
 }
 
 void MainUiScene::button_Social(Ref* pSender)
 {
-	//_mutiplexLayer->switchTo(4);
+	_mutiplexLayer->switchTo(4);
 }
 
 void MainUiScene::button_More(Ref* pSender)
 {
-	//_mutiplexLayer->switchTo(5);
+	_mutiplexLayer->switchTo(5);
 }

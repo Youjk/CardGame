@@ -137,8 +137,8 @@ void DialogLayer::onEnter()
 	// 显示文本内容
 	if (getLabelContentText()){
 		LabelTTF* ltf = getLabelContentText();
-		ltf->setPosition(winSize.width / 2, winSize.height / 2);
-		ltf->setDimensions(Size(contentSize.width - m_contentPadding * 2, contentSize.height - m_contentPaddingTop));
+		ltf->setPosition(winSize.width / 2, winSize.height / 2 + 20);
+		//ltf->setDimensions(Size(contentSize.width - m_contentPadding * 2, contentSize.height - m_contentPaddingTop));
 		ltf->setHorizontalAlignment(kCCTextAlignmentLeft);
 		this->addChild(ltf);
 	}

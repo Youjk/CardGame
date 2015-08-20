@@ -25,7 +25,7 @@ bool MailLayer::init()
 		{        
 			//¼àÌý·µ»Ø¼ü        
 		case EventKeyboard::KeyCode::KEY_ESCAPE:              
-			Director::getInstance()->popScene();            
+			NotificationCenter::getInstance()->postNotification("ReturnToMain");              
 			break;        
 			//¼àÌýmenu¼ü        
 		case EventKeyboard::KeyCode::KEY_MENU:             

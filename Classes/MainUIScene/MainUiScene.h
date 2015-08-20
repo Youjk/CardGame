@@ -2,6 +2,11 @@
 #include "cocos2d.h"
 #include "MainUIScene/MainUILayer.h"
 #include "MainUIScene/InstanceLayer.h"
+#include "BattleScene/BattleResultLayer.h"
+#include "BattleScene/FightLayer.h"
+#include "MainUIScene/StoreLayer.h"
+#include "MainUIScene/SocialLayer.h"
+#include "MainUIScene/MoreLayer.h"
 
 USING_NS_CC;
 
@@ -34,6 +39,11 @@ private:
 	MainUILayer* _mainUILayer;    
 	InstanceLayer* _instanceUILayer;
 	LayerMultiplex* _mutiplexLayer;
+	BattleResultLayer* _battleResultLayer; //战斗结算layer
+	FightLayer* _fightLayer; //战斗模块
+	StoreLayer* _storeLayer; //商店模块
+	SocialLayer* _socialLayer; //好友列表
+	MoreLayer* _moreLayer;//攻略
 	LabelTTF* text;
 	String pStrTemp; // 体力值
 	
